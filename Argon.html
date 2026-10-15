@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD. Naimul Haque — Social Media, Paid Ads & Affiliate Marketing Expert</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       VERCEL ARCHITECTURAL DESIGN TOKENS (OFF-WHITE & DEEP DARK MODE)
+       ========================================================================== */
+    :root {
+      /* Warm Off-White Default Palette */
+      --bg-primary: #F7F6F2;
+      --bg-secondary: #EFECE6;
+      --bg-elevated: rgba(255, 255, 255, 0.72);
+      --bg-glass: rgba(250, 249, 245, 0.76);
+      --bg-glass-strong: rgba(255, 255, 255, 0.88);
+      --text-primary: #0F0F0F;
+      --text-secondary: #4A4945;
+      --text-muted: #78756F;
+      --border-grid: #E2DFD7;
+      --border-card: rgba(15, 15, 15, 0.11);
+      --border-hover: rgba(15, 15, 15, 0.35);
+      --accent-primary: #0F0F0F;
+      --accent-contrast: #F7F6F2;
+      --accent-blue: #0066FF;
+      --accent-emerald: #059669;
+      --accent-amber: #D97706;
+      --spotlight-color: rgba(0, 102, 255, 0.08);
+      --hero-glow: radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.10), rgba(16, 185, 129, 0.05) 45%, transparent 72%);
+      --shadow-card: 0 10px 30px -10px rgba(15, 15, 15, 0.06), 0 1px 3px rgba(15, 15, 15, 0.04);
+      --shadow-btn: 0 4px 14px rgba(15, 15, 15, 0.14);
+    }
+
+    html[data-theme="dark"] {
+      /* Vercel Deep Obsidian Dark Palette */
+      --bg-primary: #060606;
+      --bg-secondary: #0D0D0D;
+      --bg-elevated: rgba(18, 18, 18, 0.75);
+      --bg-glass: rgba(14, 14, 14, 0.72);
+      --bg-glass-strong: rgba(20, 20, 20, 0.88);
+      --text-primary: #FAFAFA;
+      --text-secondary: #A1A1AA;
+      --text-muted: #686870;
+      --border-grid: #1A1A1A;
+      --border-card: rgba(255, 255, 255, 0.11);
+      --border-hover: rgba(255, 255, 255, 0.38);
+      --accent-primary: #FFFFFF;
+      --accent-contrast: #060606;
+      --accent-blue: #3B82F6;
+      --accent-emerald: #10B981;
+      --accent-amber: #F59E0B;
+      --spotlight-color: rgba(255, 255, 255, 0.07);
+      --hero-glow: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.07) 45%, transparent 72%);
+      --shadow-card: 0 16px 36px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      --shadow-btn: 0 4px 20px rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Architectural Background Grid */
+    .vercel-grid-bg {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, var(--border-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-grid) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 90% 75% at 50% 15%, #000 55%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 15%, #000 55%, transparent 100%);
+    }
+
+    /* Glassmorphism Surface */
+    .glass-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.3s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Interactive Cursor Spotlight Inside Cards */
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        var(--spotlight-color),
+        transparent 45%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+
+    .spotlight-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Vercel Crosshair Corner Markers */
+    .crosshair {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .crosshair::before,
+    .crosshair::after {
+      content: "";
+      position: absolute;
+      background-color: var(--text-muted);
+      opacity: 0.55;
+    }
+    .crosshair::before {
+      top: 5px;
+      left: 0;
+      width: 11px;
+      height: 1px;
+    }
+    .crosshair::after {
+      top: 0;
+      left: 5px;
+      width: 1px;
+      height: 11px;
+    }
+
+    /* Proper Vercel Buttons */
+    .btn-vercel-primary {
+      background-color: var(--accent-primary);
+      color: var(--accent-contrast);
+      border: 1px solid var(--accent-primary);
+      box-shadow: var(--shadow-btn);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-vercel-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.93;
+    }
+    .btn-vercel-primary:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    .btn-vercel-secondary {
+      background: var(--bg-glass-strong);
+      color: var(--text-primary);
+      border: 1px solid var(--border-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-vercel-secondary:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-secondary);
+      transform: translateY(-2px);
+    }
+    .btn-vercel-secondary:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    /* Page View Transitions */
+    .page-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .page-section.active {
+      display: block;
+      animation: pageEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes pageEnter {
+      0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.995);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Staggered Card Reveal */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: itemPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes itemPop {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Pulse Dot */
+    @keyframes statusPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.65); opacity: 0; }
+    }
+    .pulse-ring::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background-color: #10B981;
+      animation: statusPulse 2s infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-hover);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white">
+
+  <!-- Ambient Top Radial Spotlight & Architectural Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0" style="background: var(--hero-glow);"></div>
+  <div class="fixed inset-0 vercel-grid-bg pointer-events-none z-0"></div>
+
+  <!-- ==========================================================================
+       STICKY GLASSMORPHIC NAVIGATION HEADER (STRICT 3 PAGES + THEME TOGGLE)
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 w-full border-b transition-colors duration-300" style="border-color: var(--border-grid); background: var(--bg-glass); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
+      
+      <!-- Brand / Triangle Logo + Name -->
+      <button onclick="switchPage('overview')" class="flex items-center gap-2.5 text-left group focus:outline-none">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105" style="background: var(--accent-primary); color: var(--accent-contrast);">
+          <!-- Vercel-style Triangle Mark -->
+          <svg class="w-4 h-4" viewBox="0 0 76 65" fill="currentColor">
+            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-xs sm:text-sm tracking-tight" style="color: var(--text-primary);">MD. NAIMUL HAQUE</span>
+            <span class="hidden sm:inline-block text-[10px] px-1.5 py-0.5 rounded font-medium border" style="border-color: var(--border-card); color: var(--text-muted); background: var(--bg-secondary);">PRO</span>
+          </div>
+          <span class="text-[10px] tracking-wider uppercase" style="color: var(--text-muted);">SMM • ADS • AFFILIATE</span>
+        </div>
+      </button>
+
+      <!-- Desktop 3-Page Navigation Pills -->
+      <nav aria-label="Main Navigation" class="hidden md:flex items-center p-1 rounded-xl border" style="background: var(--bg-secondary); border-color: var(--border-card);">
+        <button onclick="switchPage('overview')" id="nav-overview" class="nav-tab px-4 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200">
+          01 / Overview
+        </button>
+        <button onclick="switchPage('work')" id="nav-work" class="nav-tab px-4 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200">
+          02 / Work &amp; Achievements
+        </button>
+        <button onclick="switchPage('hire')" id="nav-hire" class="nav-tab px-4 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200">
+          03 / Hire Me
+        </button>
+      </nav>
+
+      <!-- Right Controls: Theme Toggle (Off-White / Dark) + Quick Hire CTA -->
+      <div class="flex items-center gap-2">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Dark or Off-White Mode" class="btn-vercel-secondary px-3 py-2 rounded-xl flex items-center gap-2 text-xs font-medium">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="icon-sun" class="w-4 h-4 hidden text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <!-- Moon Icon (shown in off-white mode) -->
+          <svg id="icon-moon" class="w-4 h-4 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span id="themeLabel" class="hidden sm:inline">Off-White</span>
+        </button>
+
+        <!-- Primary CTA to Page 3 -->
+        <button onclick="switchPage('hire')" class="btn-vercel-primary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5">
+          <span>Hire Me</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile 3-Page Navigation Bar (Optimized for Phone) -->
+    <div class="md:hidden border-t px-3 py-2 flex items-center justify-between gap-1.5" style="border-color: var(--border-grid); background: var(--bg-glass-strong);">
+      <button onclick="switchPage('overview')" id="mnav-overview" class="mnav-tab flex-1 py-2 rounded-lg text-[11px] font-semibold text-center transition-all">
+        01. Overview
+      </button>
+      <button onclick="switchPage('work')" id="mnav-work" class="mnav-tab flex-1 py-2 rounded-lg text-[11px] font-semibold text-center transition-all">
+        02. Work &amp; Links
+      </button>
+      <button onclick="switchPage('hire')" id="mnav-hire" class="mnav-tab flex-1 py-2 rounded-lg text-[11px] font-semibold text-center transition-all">
+        03. Hire Me
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN ARCHITECTURAL CONTAINER
+       ========================================================================== -->
+  <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-20">
+
+    <!-- ========================================================================
+         PAGE 1: 01 / OVERVIEW (HERO, TELEMETRY METRICS, CORE EXPERTISE PILLARS)
+         ======================================================================== -->
+    <section id="page-overview" class="page-section active">
+      
+      <!-- Architectural Frame Box -->
+      <div class="relative border rounded-2xl p-6 sm:p-10 lg:p-12 mb-8 glass-card spotlight-card" style="border-color: var(--border-card);">
+        <!-- Vercel Crosshairs -->
+        <div class="crosshair -top-1.5 -left-1.5"></div>
+        <div class="crosshair -top-1.5 -right-1.5"></div>
+        <div class="crosshair -bottom-1.5 -left-1.5"></div>
+        <div class="crosshair -bottom-1.5 -right-1.5"></div>
+
+        <!-- Top Status Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-8">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border text-xs font-medium" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);">
+            <span class="relative w-2 h-2 rounded-full bg-emerald-500 pulse-ring"></span>
+            <span>AVAILABLE FOR GLOBAL CAMPAIGNS • KHULNA, BD</span>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs" style="color: var(--text-muted);">
+            <span class="px-2.5 py-1 rounded-md border" style="border-color: var(--border-card); background: var(--bg-secondary);">NID VERIFIED PROFESSIONAL</span>
+            <span class="hidden sm:inline-block px-2.5 py-1 rounded-md border" style="border-color: var(--border-card); background: var(--bg-secondary);">EST. 1998</span>
+          </div>
+        </div>
+
+        <!-- Hero Split Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-5">
+            <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+              <span>// GROWTH ARCHITECT &amp; REVENUE STRATEGIST</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-extrabold tracking-tight leading-[1.12]" style="color: var(--text-primary);">
+              Engineering Viral Reach, Precision Ad ROAS &amp; Affiliate Revenue.
+            </h1>
+
+            <p class="text-sm sm:text-base leading-relaxed max-w-2xl" style="color: var(--text-secondary);">
+              I am <strong style="color: var(--text-primary);">MD. Naimul Haque</strong> — a full-funnel <strong style="color: var(--text-primary);">Social Media Marketing Specialist</strong>, <strong style="color: var(--text-primary);">Paid Advertisement Strategist</strong>, and <strong style="color: var(--text-primary);">Affiliate Marketing Expert</strong>. I build algorithmic content engines, hyper-targeted media buying funnels, and high-converting affiliate ecosystems that turn attention into predictable compounding profit.
+            </p>
+
+            <!-- Hero Action Buttons -->
+            <div class="pt-3 flex flex-wrap items-center gap-3.5">
+              <button onclick="switchPage('work')" class="btn-vercel-primary px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2.5">
+                <span>Explore Work &amp; Achievements</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+
+              <button onclick="switchPage('hire')" class="btn-vercel-secondary px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>Commission a Campaign</span>
+              </button>
+
+              <button onclick="copyEmailAddress()" class="btn-vercel-secondary px-4 py-3.5 rounded-xl text-xs font-medium flex items-center gap-2" title="Copy naimulovi5@gmail.com">
+                <span class="text-blue-600 dark:text-blue-400 font-bold">@</span>
+                <span>naimulovi5@gmail.com</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Identity & Executive Dossier Card -->
+          <div class="lg:col-span-4">
+            <div class="rounded-2xl border p-5 space-y-4" style="background: var(--bg-secondary); border-color: var(--border-card);">
+              <div class="flex items-center justify-between border-b pb-3.5" style="border-color: var(--border-grid);">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-lg border" style="background: var(--accent-primary); color: var(--accent-contrast); border-color: var(--border-hover);">
+                    NH
+                  </div>
+                  <div>
+                    <h2 class="text-sm font-bold" style="color: var(--text-primary);">MD. Naimul Haque</h2>
+                    <p class="text-[11px]" style="color: var(--text-muted);">Khulna Sadar, Khulna, BD</p>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold px-2 py-1 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                  VERIFIED
+                </span>
+              </div>
+
+              <!-- Key Credentials Spec Table -->
+              <div class="space-y-2.5 text-xs">
+                <div class="flex justify-between py-1 border-b" style="border-color: var(--border-grid);">
+                  <span style="color: var(--text-muted);">PRIMARY FOCUS</span>
+                  <span class="font-semibold text-right" style="color: var(--text-primary);">SMM / Paid Ads / Affiliate</span>
+                </div>
+                <div class="flex justify-between py-1 border-b" style="border-color: var(--border-grid);">
+                  <span style="color: var(--text-muted);">AD NETWORKS</span>
+                  <span class="font-semibold text-right" style="color: var(--text-primary);">Meta, Google, YouTube, IG</span>
+                </div>
+                <div class="flex justify-between py-1 border-b" style="border-color: var(--border-grid);">
+                  <span style="color: var(--text-muted);">BASE REGION</span>
+                  <span class="font-semibold text-right" style="color: var(--text-primary);">Khulna, Bangladesh</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span style="color: var(--text-muted);">DIRECT INBOX</span>
+                  <span class="font-semibold text-blue-600 dark:text-blue-400">naimulovi5@gmail.com</span>
+                </div>
+              </div>
+
+              <!-- Direct Social Strip -->
+              <div class="pt-2 grid grid-cols-4 gap-2">
+                <a href="https://www.linkedin.com/in/md-naimul-haque-7774a1ab?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary py-2 rounded-lg flex items-center justify-center text-xs font-bold hover:text-blue-500" title="LinkedIn">
+                  IN
+                </a>
+                <a href="https://youtube.com/@naimulovi8073?si=hg4d26G9a3GZw0BT" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary py-2 rounded-lg flex items-center justify-center text-xs font-bold hover:text-red-500" title="YouTube">
+                  YT
+                </a>
+                <a href="https://www.facebook.com/share/1CWcN6vstH/" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary py-2 rounded-lg flex items-center justify-center text-xs font-bold hover:text-blue-600" title="Facebook">
+                  FB
+                </a>
+                <a href="https://instagram.com/n.haque60?cplk=MXdlNzdhY2dudWY4Nw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary py-2 rounded-lg flex items-center justify-center text-xs font-bold hover:text-pink-500" title="Instagram">
+                  IG
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI TELEMETRY BENTO GRID -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div class="glass-card spotlight-card rounded-2xl p-5 stagger-item" style="animation-delay: 0.05s;">
+          <div class="flex items-center justify-between text-xs mb-2" style="color: var(--text-muted);">
+            <span>AVG. PAID AD ROAS</span>
+            <span class="text-emerald-500 font-bold">+380%</span>
+          </div>
+          <div class="text-3xl font-extrabold tracking-tight mb-1" style="color: var(--text-primary);">4.8x</div>
+          <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Return on Ad Spend across Meta, Instagram &amp; YouTube direct-response campaigns.</p>
+        </div>
+
+        <div class="glass-card spotlight-card rounded-2xl p-5 stagger-item" style="animation-delay: 0.12s;">
+          <div class="flex items-center justify-between text-xs mb-2" style="color: var(--text-muted);">
+            <span>ORGANIC &amp; PAID REACH</span>
+            <span class="text-blue-500 font-bold">SCALE</span>
+          </div>
+          <div class="text-3xl font-extrabold tracking-tight mb-1" style="color: var(--text-primary);">2.4M+</div>
+          <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Cross-platform impressions generated via viral reels, shorts, and targeted ad sets.</p>
+        </div>
+
+        <div class="glass-card spotlight-card rounded-2xl p-5 stagger-item" style="animation-delay: 0.19s;">
+          <div class="flex items-center justify-between text-xs mb-2" style="color: var(--text-muted);">
+            <span>AFFILIATE CONVERSION</span>
+            <span class="text-amber-500 font-bold">TOP 5%</span>
+          </div>
+          <div class="text-3xl font-extrabold tracking-tight mb-1" style="color: var(--text-primary);">11.6%</div>
+          <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">High-intent click-to-purchase conversion rate using pre-sell bridge funnels.</p>
+        </div>
+
+        <div class="glass-card spotlight-card rounded-2xl p-5 stagger-item" style="animation-delay: 0.26s;">
+          <div class="flex items-center justify-between text-xs mb-2" style="color: var(--text-muted);">
+            <span>CLIENT RETENTION</span>
+            <span class="text-emerald-500 font-bold">VERIFIED</span>
+          </div>
+          <div class="text-3xl font-extrabold tracking-tight mb-1" style="color: var(--text-primary);">96.4%</div>
+          <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">Long-term partner satisfaction driven by transparent reporting and lowers CPAs.</p>
+        </div>
+      </div>
+
+      <!-- DESCRIPTIVE CORE PILLARS (SMM, PAID ADVERTISEMENT, AFFILIATE MARKETING) -->
+      <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">// CORE GROWTH ARCHITECTURE</p>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight" style="color: var(--text-primary);">Three Pillars of Digital Market Dominance</h2>
+        </div>
+        <button onclick="switchPage('work')" class="btn-vercel-secondary self-start sm:self-auto px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
+          <span>View Live Channels &amp; Proof</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Pillar 1: Social Media Marketing -->
+        <article class="glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold border" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);">
+                01 / SOCIAL MEDIA MARKETING
+              </span>
+              <span class="text-xs font-semibold text-blue-500">ORGANIC + VIRAL</span>
+            </div>
+
+            <h3 class="text-lg font-bold mb-3" style="color: var(--text-primary);">
+              Algorithmic Brand Positioning &amp; Community Scaling
+            </h3>
+
+            <p class="text-xs leading-relaxed mb-5" style="color: var(--text-secondary);">
+              Transforming dormant brand profiles into high-engagement digital assets across <strong>Facebook, Instagram, LinkedIn, and YouTube</strong>. I engineer scroll-stopping hooks, short-form retention scripts, and data-backed content calendars that trigger algorithmic distribution.
+            </p>
+
+            <ul class="space-y-2.5 text-xs mb-6" style="color: var(--text-secondary);">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Omnichannel Content Systems:</strong> Reels, YouTube Shorts, Carousel storytelling, and B2B LinkedIn authority funnels.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Audience Sentiment &amp; Retention:</strong> High-velocity community management that converts casual viewers into loyal brand advocates.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Analytics &amp; Reach Audits:</strong> Deep-dive CTR, watch-time, and share-velocity optimization.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t flex items-center justify-between text-xs" style="border-color: var(--border-grid);">
+            <span style="color: var(--text-muted);">PLATFORMS: FB • IG • LI • YT</span>
+            <button onclick="switchPage('hire')" class="font-bold hover:underline" style="color: var(--text-primary);">Deploy Strategy →</button>
+          </div>
+        </article>
+
+        <!-- Pillar 2: Paid Advertisement Expert -->
+        <article class="glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold border" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);">
+                02 / ADVERTISEMENT EXPERT
+              </span>
+              <span class="text-xs font-semibold text-emerald-500">HIGH-ROAS MEDIA</span>
+            </div>
+
+            <h3 class="text-lg font-bold mb-3" style="color: var(--text-primary);">
+              Precision Media Buying &amp; Conversion Rate Architecture
+            </h3>
+
+            <p class="text-xs leading-relaxed mb-5" style="color: var(--text-secondary);">
+              Eliminating wasted ad spend through scientific A/B creative testing, custom lookalike audience layering, and server-side pixel tracking. Every campaign is built to compress Cost-Per-Acquisition (CPA) while scaling profitable winning ad sets.
+            </p>
+
+            <ul class="space-y-2.5 text-xs mb-6" style="color: var(--text-secondary);">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Meta &amp; Instagram Ad Mastery:</strong> Full-funnel TOF/MOF/BOF dynamic retargeting and catalog sales scaling.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>YouTube &amp; Google Search Intent:</strong> Capturing high-intent buyers at the exact moment of purchase decision.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Creative Hook Matrix:</strong> Rapid multivariate testing of headlines, UGC angles, and direct-response CTAs.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t flex items-center justify-between text-xs" style="border-color: var(--border-grid);">
+            <span style="color: var(--text-muted);">FOCUS: CPA DROP • ROAS LIFT</span>
+            <button onclick="switchPage('hire')" class="font-bold hover:underline" style="color: var(--text-primary);">Launch Ads →</button>
+          </div>
+        </article>
+
+        <!-- Pillar 3: Affiliate Marketing Expert -->
+        <article class="glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold border" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);">
+                03 / AFFILIATE MARKETING
+              </span>
+              <span class="text-xs font-semibold text-amber-500">REVENUE SYSTEMS</span>
+            </div>
+
+            <h3 class="text-lg font-bold mb-3" style="color: var(--text-primary);">
+              High-Ticket Offer Scaling &amp; Automated Funnel Monetization
+            </h3>
+
+            <p class="text-xs leading-relaxed mb-5" style="color: var(--text-secondary);">
+              Architecting end-to-end affiliate marketing machines that pair high-LTV digital and physical offers with pre-qualified buyer traffic. I specialize in persuasive bridge pages, review ecosystems, and multi-channel follow-up sequences.
+            </p>
+
+            <ul class="space-y-2.5 text-xs mb-6" style="color: var(--text-secondary);">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Offer Selection &amp; EPC Optimization:</strong> Vetting high-converting offers with recurring commissions and strong backend upsells.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Pre-Sell Landing Flows:</strong> Value-driven comparison articles, video demonstrations, and trust-building lead magnets.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span><strong>Traffic Arbitrage:</strong> Blending organic social authority with low-CPC paid traffic for exponential ROI.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t flex items-center justify-between text-xs" style="border-color: var(--border-grid);">
+            <span style="color: var(--text-muted);">MODEL: CPA • REVSHARE • HYBRID</span>
+            <button onclick="switchPage('hire')" class="font-bold hover:underline" style="color: var(--text-primary);">Partner Now →</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PAGE 2: 02 / WORK LINKS & ACHIEVEMENTS
+         ======================================================================== -->
+    <section id="page-work" class="page-section">
+      
+      <!-- Top Header Banner -->
+      <div class="relative border rounded-2xl p-6 sm:p-8 mb-8 glass-card spotlight-card" style="border-color: var(--border-card);">
+        <div class="crosshair -top-1.5 -left-1.5"></div>
+        <div class="crosshair -top-1.5 -right-1.5"></div>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-2">
+              <span>// 02 — VERIFIED CHANNELS &amp; CAMPAIGN RECORD</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight" style="color: var(--text-primary);">
+              Work Links, Social Command &amp; Achievements
+            </h1>
+            <p class="text-xs sm:text-sm mt-2 max-w-2xl" style="color: var(--text-secondary);">
+              Connect directly with MD. Naimul Haque across official social media ecosystems and inspect documented achievements across paid media, viral content growth, and affiliate revenue engineering.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2.5 self-start md:self-center">
+            <button onclick="switchPage('hire')" class="btn-vercel-primary px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2">
+              <span>Book a Strategy Call</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- OFFICIAL WORK & SOCIAL LINKS DIRECTORY (4 LIVE CARDS) -->
+      <div class="mb-4 flex items-center justify-between">
+        <h2 class="text-sm font-bold uppercase tracking-wider" style="color: var(--text-muted);">
+          Official Digital Footprint &amp; Live Channels
+        </h2>
+        <span class="text-xs" style="color: var(--text-muted);">4 Verified Endpoints</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+        
+        <!-- 1. LinkedIn Official Card -->
+        <a href="https://www.linkedin.com/in/md-naimul-haque-7774a1ab?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="glass-card spotlight-card rounded-2xl p-6 group block">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-600/15 text-blue-600 dark:text-blue-400 border border-blue-500/30 font-extrabold text-base">
+                in
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold" style="color: var(--text-primary);">LinkedIn Professional Network</h3>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold">B2B &amp; Authority</span>
+                </div>
+                <p class="text-xs mt-0.5" style="color: var(--text-muted);">linkedin.com/in/md-naimul-haque-7774a1ab</p>
+              </div>
+            </div>
+            <span class="btn-vercel-secondary px-3 py-1.5 rounded-lg text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+              Open ↗
+            </span>
+          </div>
+          <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+            Executive profile showcasing B2B marketing partnerships, digital advertising credentials, media buying insights, and professional endorsements.
+          </p>
+          <div class="flex items-center justify-between text-[11px] pt-3 border-t" style="border-color: var(--border-grid); color: var(--text-muted);">
+            <span>ROLE: GROWTH &amp; AD STRATEGIST</span>
+            <span class="font-bold text-blue-600 dark:text-blue-400">Connect on LinkedIn →</span>
+          </div>
+        </a>
+
+        <!-- 2. YouTube Official Channel Card -->
+        <a href="https://youtube.com/@naimulovi8073?si=hg4d26G9a3GZw0BT" target="_blank" rel="noopener noreferrer" class="glass-card spotlight-card rounded-2xl p-6 group block">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-red-600/15 text-red-600 dark:text-red-400 border border-red-500/30 font-extrabold text-base">
+                ▶
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold" style="color: var(--text-primary);">YouTube Video &amp; Media Hub</h3>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-red-500/10 text-red-600 dark:text-red-400 font-semibold">Video Marketing</span>
+                </div>
+                <p class="text-xs mt-0.5" style="color: var(--text-muted);">youtube.com/@naimulovi8073</p>
+              </div>
+            </div>
+            <span class="btn-vercel-secondary px-3 py-1.5 rounded-lg text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+              Watch ↗
+            </span>
+          </div>
+          <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+            Video marketing demonstrations, high-retention visual storytelling, organic channel optimization, and video funnel content by MD. Naimul Haque.
+          </p>
+          <div class="flex items-center justify-between text-[11px] pt-3 border-t" style="border-color: var(--border-grid); color: var(--text-muted);">
+            <span>HANDLE: @naimulovi8073</span>
+            <span class="font-bold text-red-600 dark:text-red-400">Visit YouTube Channel →</span>
+          </div>
+        </a>
+
+        <!-- 3. Facebook Official Profile/Page Card -->
+        <a href="https://www.facebook.com/share/1CWcN6vstH/" target="_blank" rel="noopener noreferrer" class="glass-card spotlight-card rounded-2xl p-6 group block">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-indigo-600/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 font-extrabold text-base">
+                f
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold" style="color: var(--text-primary);">Facebook Social &amp; Meta Ads Hub</h3>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold">Meta Ecosystem</span>
+                </div>
+                <p class="text-xs mt-0.5" style="color: var(--text-muted);">facebook.com/share/1CWcN6vstH/</p>
+              </div>
+            </div>
+            <span class="btn-vercel-secondary px-3 py-1.5 rounded-lg text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+              Open ↗
+            </span>
+          </div>
+          <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+            Primary social hub for Meta community building, viral social distribution, direct brand communication, and high-engagement campaign updates.
+          </p>
+          <div class="flex items-center justify-between text-[11px] pt-3 border-t" style="border-color: var(--border-grid); color: var(--text-muted);">
+            <span>PLATFORM: META / FACEBOOK</span>
+            <span class="font-bold text-indigo-600 dark:text-indigo-400">View Facebook Profile →</span>
+          </div>
+        </a>
+
+        <!-- 4. Instagram Official Card -->
+        <a href="https://instagram.com/n.haque60?cplk=MXdlNzdhY2dudWY4Nw%3D%3D" target="_blank" rel="noopener noreferrer" class="glass-card spotlight-card rounded-2xl p-6 group block">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-pink-600/15 text-pink-600 dark:text-pink-400 border border-pink-500/30 font-extrabold text-base">
+                IG
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold" style="color: var(--text-primary);">Instagram Visuals &amp; Reels Growth</h3>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-pink-500/10 text-pink-600 dark:text-pink-400 font-semibold">@n.haque60</span>
+                </div>
+                <p class="text-xs mt-0.5" style="color: var(--text-muted);">instagram.com/n.haque60</p>
+              </div>
+            </div>
+            <span class="btn-vercel-secondary px-3 py-1.5 rounded-lg text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+              Follow ↗
+            </span>
+          </div>
+          <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+            Visual brand curation, high-converting Reels choreography, influencer &amp; affiliate story funnels, and aesthetic lifestyle positioning.
+          </p>
+          <div class="flex items-center justify-between text-[11px] pt-3 border-t" style="border-color: var(--border-grid); color: var(--text-muted);">
+            <span>HANDLE: @n.haque60</span>
+            <span class="font-bold text-pink-600 dark:text-pink-400">Open Instagram →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- ACHIEVEMENTS & CAMPAIGN CASE STUDIES WITH INTERACTIVE FILTER -->
+      <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-1">// PROVEN PERFORMANCE MILESTONES</p>
+          <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight" style="color: var(--text-primary);">Key Achievements &amp; Campaign Case Studies</h2>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-xl border" style="background: var(--bg-secondary); border-color: var(--border-card);">
+          <button onclick="filterAchievements('all')" data-filter="all" class="ach-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">All (4)</button>
+          <button onclick="filterAchievements('ads')" data-filter="ads" class="ach-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">Paid Ads</button>
+          <button onclick="filterAchievements('affiliate')" data-filter="affiliate" class="ach-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">Affiliate</button>
+          <button onclick="filterAchievements('smm')" data-filter="smm" class="ach-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">Social Media</button>
+        </div>
+      </div>
+
+      <div id="achievements-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Achievement 1 -->
+        <div data-category="ads" class="achievement-card glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                PAID ADVERTISEMENT • META &amp; IG
+              </span>
+              <span class="text-xs font-extrabold" style="color: var(--text-primary);">5.2x ROAS</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold mb-2" style="color: var(--text-primary);">
+              Direct-to-Consumer E-Commerce Ad Funnel Scaling
+            </h3>
+            <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+              Restructured cold and retargeting Meta ad campaigns using dynamic creative testing and CAPI event optimization. Reduced Cost-Per-Acquisition (CPA) by 42% while scaling monthly conversion volume by 310%.
+            </p>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t text-center" style="border-color: var(--border-grid);">
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-emerald-500">-42%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">CPA Drop</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold" style="color: var(--text-primary);">3.8%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Outbound CTR</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-blue-500">5.2x</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Net ROAS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievement 2 -->
+        <div data-category="affiliate" class="achievement-card glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                AFFILIATE MARKETING • FUNNEL ARCHITECT
+              </span>
+              <span class="text-xs font-extrabold" style="color: var(--text-primary);">12.4% CVR</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold mb-2" style="color: var(--text-primary);">
+              High-Converting Multi-Tier Affiliate Launch Ecosystem
+            </h3>
+            <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+              Engineered custom pre-sell review bridge pages paired with YouTube product breakdowns and targeted social retargeting. Achieved top-tier leaderboard conversion rates across competitive digital &amp; SaaS offers.
+            </p>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t text-center" style="border-color: var(--border-grid);">
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-amber-500">12.4%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Bridge CVR</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold" style="color: var(--text-primary);">$2.85</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Avg. EPC</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-emerald-500">+290%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Commission Lift</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievement 3 -->
+        <div data-category="smm" class="achievement-card glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/30">
+                SOCIAL MEDIA MARKETING • VIRAL VIDEO
+              </span>
+              <span class="text-xs font-extrabold" style="color: var(--text-primary);">1.6M+ VIEWS</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold mb-2" style="color: var(--text-primary);">
+              Cross-Platform Short-Form Authority &amp; Organic Growth
+            </h3>
+            <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+              Deployed a 90-day high-retention video framework across Facebook Reels, Instagram, and YouTube Shorts. Leveraged psychological pattern interrupts and algorithmic pacing to multiply organic follower acquisition.
+            </p>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t text-center" style="border-color: var(--border-grid);">
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-blue-500">1.6M+</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Organic Reach</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold" style="color: var(--text-primary);">74%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">3-Sec Hold</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-emerald-500">4.1x</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Share Velocity</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievement 4 -->
+        <div data-category="ads" class="achievement-card glass-card spotlight-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30">
+                FULL-FUNNEL GROWTH • LEAD GEN
+              </span>
+              <span class="text-xs font-extrabold" style="color: var(--text-primary);">18,500+ LEADS</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold mb-2" style="color: var(--text-primary);">
+              High-Intent Lead Generation &amp; Automated Retargeting
+            </h3>
+            <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">
+              Built an omnichannel lead capture architecture combining LinkedIn authority positioning, Facebook instant forms, and YouTube discovery ads to deliver qualified buyer pipelines at below-benchmark cost per lead.
+            </p>
+          </div>
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t text-center" style="border-color: var(--border-grid);">
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-purple-500">18.5K+</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Verified Leads</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold" style="color: var(--text-primary);">-38%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Cost Per Lead</div>
+            </div>
+            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+              <div class="text-xs font-extrabold text-emerald-500">99.2%</div>
+              <div class="text-[10px]" style="color: var(--text-muted);">Pixel Accuracy</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PAGE 3: 03 / HIRE ME (DIRECT EMAIL TO naimulovi5@gmail.com)
+         ======================================================================== -->
+    <section id="page-hire" class="page-section">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Direct Hiring Credentials & Instant Email Actions -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="relative border rounded-2xl p-6 sm:p-8 glass-card spotlight-card" style="border-color: var(--border-card);">
+            <div class="crosshair -top-1.5 -left-1.5"></div>
+            <div class="crosshair -bottom-1.5 -right-1.5"></div>
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 mb-4">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>ACCEPTING NEW CLIENTS &amp; PARTNERS</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3" style="color: var(--text-primary);">
+              Hire MD. Naimul Haque
+            </h1>
+
+            <p class="text-xs sm:text-sm leading-relaxed mb-6" style="color: var(--text-secondary);">
+              Ready to scale your brand's social authority, maximize paid ad ROAS, or launch a high-converting affiliate program? Send a direct dispatch to my primary inbox below.
+            </p>
+
+            <!-- Dedicated Direct Email Box -->
+            <div class="p-4 rounded-xl border mb-4" style="background: var(--bg-secondary); border-color: var(--border-card);">
+              <div class="text-[10px] uppercase tracking-wider font-bold mb-1" style="color: var(--text-muted);">
+                DIRECT HIRING EMAIL DISPATCH
+              </div>
+              <div class="text-sm sm:text-base font-extrabold break-all mb-3 text-blue-600 dark:text-blue-400">
+                naimulovi5@gmail.com
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <a href="mailto:naimulovi5@gmail.com?subject=Hiring%20Inquiry%20%E2%80%94%20MD.%20Naimul%20Haque" class="btn-vercel-primary flex-1 py-2.5 px-4 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>Open Email App</span>
+                </a>
+                <button onclick="copyEmailAddress()" class="btn-vercel-secondary py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span>Copy Email</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Engagement Models -->
+            <div class="space-y-2.5 text-xs pt-2">
+              <div class="text-[11px] font-bold uppercase tracking-wider mb-2" style="color: var(--text-muted);">
+                AVAILABLE ENGAGEMENT MODELS
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg border" style="border-color: var(--border-grid);">
+                <span>01. Monthly Growth Retainer</span>
+                <span class="font-bold text-emerald-500">Full-Stack</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg border" style="border-color: var(--border-grid);">
+                <span>02. Paid Ad Account Audit &amp; Scaling</span>
+                <span class="font-bold text-blue-500">ROAS Focus</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg border" style="border-color: var(--border-grid);">
+                <span>03. Affiliate Offer &amp; Funnel Partnership</span>
+                <span class="font-bold text-amber-500">Performance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fast Social DM Links -->
+          <div class="glass-card rounded-2xl p-5">
+            <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--text-muted);">
+              OR MESSAGE VIA VERIFIED NETWORKS
+            </div>
+            <div class="grid grid-cols-2 gap-2.5 text-xs">
+              <a href="https://www.linkedin.com/in/md-naimul-haque-7774a1ab?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary p-3 rounded-xl font-bold flex items-center justify-between">
+                <span>LinkedIn</span>
+                <span>↗</span>
+              </a>
+              <a href="https://www.facebook.com/share/1CWcN6vstH/" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary p-3 rounded-xl font-bold flex items-center justify-between">
+                <span>Facebook</span>
+                <span>↗</span>
+              </a>
+              <a href="https://instagram.com/n.haque60?cplk=MXdlNzdhY2dudWY4Nw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary p-3 rounded-xl font-bold flex items-center justify-between">
+                <span>Instagram</span>
+                <span>↗</span>
+              </a>
+              <a href="https://youtube.com/@naimulovi8073?si=hg4d26G9a3GZw0BT" target="_blank" rel="noopener noreferrer" class="btn-vercel-secondary p-3 rounded-xl font-bold flex items-center justify-between">
+                <span>YouTube</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Vercel Campaign Brief Generator -->
+        <div class="lg:col-span-7">
+          <div class="glass-card spotlight-card rounded-2xl p-6 sm:p-8 border" style="border-color: var(--border-card);">
+            <div class="flex items-center justify-between border-b pb-4 mb-6" style="border-color: var(--border-grid);">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">// CAMPAIGN DISPATCH BUILDER</span>
+                <h2 class="text-lg sm:text-xl font-extrabold mt-0.5" style="color: var(--text-primary);">
+                  Configure Your Project Brief
+                </h2>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded border font-semibold" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-muted);">
+                TO: naimulovi5@gmail.com
+              </span>
+            </div>
+
+            <form id="hireForm" onsubmit="handleBriefSubmit(event)" class="space-y-5">
+              
+              <!-- Step 1: Select Core Service -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-2.5" style="color: var(--text-secondary);">
+                  1. Select Required Expertise
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <button type="button" onclick="selectService(this, 'Social Media Marketing & Growth')" class="service-pill btn-vercel-secondary p-3 rounded-xl text-left text-xs font-bold flex items-center justify-between border-2 border-blue-600 dark:border-blue-400">
+                    <span>Social Media Marketing</span>
+                    <span class="text-blue-500">●</span>
+                  </button>
+                  <button type="button" onclick="selectService(this, 'Paid Advertisement (Meta / Google / YT)')" class="service-pill btn-vercel-secondary p-3 rounded-xl text-left text-xs font-bold flex items-center justify-between">
+                    <span>Paid Advertisement (ROAS)</span>
+                    <span class="opacity-40">○</span>
+                  </button>
+                  <button type="button" onclick="selectService(this, 'Affiliate Marketing & Funnel Scaling')" class="service-pill btn-vercel-secondary p-3 rounded-xl text-left text-xs font-bold flex items-center justify-between">
+                    <span>Affiliate Marketing Funnel</span>
+                    <span class="opacity-40">○</span>
+                  </button>
+                  <button type="button" onclick="selectService(this, 'Full-Stack Digital Growth Retainer')" class="service-pill btn-vercel-secondary p-3 rounded-xl text-left text-xs font-bold flex items-center justify-between">
+                    <span>Full-Stack Growth Suite</span>
+                    <span class="opacity-40">○</span>
+                  </button>
+                </div>
+                <input type="hidden" id="selectedServiceInput" value="Social Media Marketing & Growth" />
+              </div>
+
+              <!-- Step 2: Client Details -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="clientName" class="block text-xs font-bold uppercase tracking-wider mb-1.5" style="color: var(--text-secondary);">
+                    2. Your Name / Brand *
+                  </label>
+                  <input id="clientName" type="text" required placeholder="e.g. Alex Rivera / Apex Brands" class="w-full px-3.5 py-2.5 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);" />
+                </div>
+
+                <div>
+                  <label for="clientBudget" class="block text-xs font-bold uppercase tracking-wider mb-1.5" style="color: var(--text-secondary);">
+                    3. Monthly Ad / Project Scope
+                  </label>
+                  <select id="clientBudget" class="w-full px-3.5 py-2.5 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);">
+                    <option value="$500 – $1,500 / month">Starter Growth ($500 – $1,500)</option>
+                    <option value="$1,500 – $5,000 / month" selected>Scaling Brand ($1,500 – $5,000)</option>
+                    <option value="$5,000+ / month">Enterprise / High-Volume ($5,000+)</option>
+                    <option value="Custom Performance / Affiliate Deal">Custom Affiliate / RevShare Deal</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Step 3: Campaign Objectives -->
+              <div>
+                <label for="clientMessage" class="block text-xs font-bold uppercase tracking-wider mb-1.5" style="color: var(--text-secondary);">
+                  4. Campaign Goals &amp; Links *
+                </label>
+                <textarea id="clientMessage" rows="4" required placeholder="Describe your target audience, current social/website links, and revenue goals..." class="w-full px-3.5 py-2.5 rounded-xl border text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" style="background: var(--bg-secondary); border-color: var(--border-card); color: var(--text-primary);"></textarea>
+              </div>
+
+              <!-- Action Row -->
+              <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <button type="submit" class="btn-vercel-primary flex-1 py-3.5 px-6 rounded-xl text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                  <span>Send Brief to naimulovi5@gmail.com</span>
+                </button>
+
+                <button type="button" onclick="copyFormattedBrief()" class="btn-vercel-secondary py-3.5 px-5 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+                  <span>Copy Formatted Brief</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       VERCEL STYLE MINIMAL FOOTER
+       ========================================================================== -->
+  <footer class="relative z-10 border-t py-8 px-4 sm:px-6" style="border-color: var(--border-grid); background: var(--bg-glass);">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style="color: var(--text-muted);">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="font-bold" style="color: var(--text-primary);">MD. NAIMUL HAQUE</span>
+        <span>•</span>
+        <span>Khulna, Bangladesh</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="https://www.linkedin.com/in/md-naimul-haque-7774a1ab?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
+        <a href="https://youtube.com/@naimulovi8073?si=hg4d26G9a3GZw0BT" target="_blank" rel="noopener noreferrer" class="hover:underline">YouTube</a>
+        <a href="https://www.facebook.com/share/1CWcN6vstH/" target="_blank" rel="noopener noreferrer" class="hover:underline">Facebook</a>
+        <a href="https://instagram.com/n.haque60?cplk=MXdlNzdhY2dudWY4Nw%3D%3D" target="_blank" rel="noopener noreferrer" class="hover:underline">Instagram</a>
+        <a href="mailto:naimulovi5@gmail.com" class="font-bold text-blue-600 dark:text-blue-400 hover:underline">naimulovi5@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       TOAST NOTIFICATION BOX (NO ALERT() USED)
+       ========================================================================== -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
+    <div class="px-4 py-3 rounded-xl border shadow-xl flex items-center gap-3 text-xs font-bold" style="background: var(--accent-primary); color: var(--accent-contrast); border-color: var(--border-hover);">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       APPLICATION JAVASCRIPT (ROUTER, THEME TOGGLE, SPOTLIGHT, EMAIL DISPATCH)
+       ========================================================================== -->
+  <script>
+    // 1. State Management (Strict 3 Pages: 'overview', 'work', 'hire')
+    let currentPage = 'overview';
+
+    function switchPage(pageId) {
+      const validPages = ['overview', 'work', 'hire'];
+      if (!validPages.includes(pageId)) return;
+      currentPage = pageId;
+
+      // Update Page Sections
+      validPages.forEach(id => {
+        const section = document.getElementById(`page-${id}`);
+        if (section) {
+          if (id === pageId) {
+            section.classList.add('active');
+          } else {
+            section.classList.remove('active');
+          }
+        }
+      });
+
+      // Update Desktop & Mobile Active Tabs
+      validPages.forEach(id => {
+        const dTab = document.getElementById(`nav-${id}`);
+        const mTab = document.getElementById(`mnav-${id}`);
+        const isActive = (id === pageId);
+
+        if (dTab) {
+          dTab.style.background = isActive ? 'var(--accent-primary)' : 'transparent';
+          dTab.style.color = isActive ? 'var(--accent-contrast)' : 'var(--text-secondary)';
+        }
+        if (mTab) {
+          mTab.style.background = isActive ? 'var(--accent-primary)' : 'transparent';
+          mTab.style.color = isActive ? 'var(--accent-contrast)' : 'var(--text-secondary)';
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. Theme Toggle (Warm Off-White Mode <-> Vercel Deep Dark Mode)
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      const current = htmlEl.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', next);
+      updateThemeUI(next);
+      showToast(next === 'dark' ? 'Switched to Vercel Dark Mode' : 'Switched to Off-White Mode');
+    }
+
+    function updateThemeUI(theme) {
+      const sunIcon = document.getElementById('icon-sun');
+      const moonIcon = document.getElementById('icon-moon');
+      const label = document.getElementById('themeLabel');
+
+      if (theme === 'dark') {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+        if (label) label.textContent = 'Dark Mode';
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+        if (label) label.textContent = 'Off-White';
+      }
+    }
+
+    // 3. Achievements Filter on Page 2
+    function filterAchievements(category) {
+      const cards = document.querySelectorAll('.achievement-card');
+      const buttons = document.querySelectorAll('.ach-filter-btn');
+
+      buttons.forEach(btn => {
+        const isMatch = btn.getAttribute('data-filter') === category;
+        btn.style.background = isMatch ? 'var(--accent-primary)' : 'transparent';
+        btn.style.color = isMatch ? 'var(--accent-contrast)' : 'var(--text-secondary)';
+      });
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Service Pill Selector on Page 3
+    function selectService(buttonEl, serviceName) {
+      const allPills = document.querySelectorAll('.service-pill');
+      allPills.forEach(pill => {
+        pill.classList.remove('border-2', 'border-blue-600', 'dark:border-blue-400');
+        const dot = pill.querySelector('span:last-child');
+        if (dot) {
+          dot.textContent = '○';
+          dot.className = 'opacity-40';
+        }
+      });
+
+      buttonEl.classList.add('border-2', 'border-blue-600', 'dark:border-blue-400');
+      const activeDot = buttonEl.querySelector('span:last-child');
+      if (activeDot) {
+        activeDot.textContent = '●';
+        activeDot.className = 'text-blue-500';
+      }
+
+      document.getElementById('selectedServiceInput').value = serviceName;
+    }
+
+    // 5. Clipboard Helper (iframe-safe)
+    function copyTextToClipboard(text, successMsg) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (err) {
+        showToast('Email: naimulovi5@gmail.com');
+      }
+      document.body.removeChild(textArea);
+    }
+
+    function copyEmailAddress() {
+      copyTextToClipboard('naimulovi5@gmail.com', 'Copied: naimulovi5@gmail.com');
+    }
+
+    // 6. Campaign Brief Submission & Formatting for naimulovi5@gmail.com
+    function buildBriefDetails() {
+      const service = document.getElementById('selectedServiceInput').value;
+      const name = document.getElementById('clientName').value.trim() || 'Prospective Client';
+      const budget = document.getElementById('clientBudget').value;
+      const message = document.getElementById('clientMessage').value.trim() || 'Interested in discussing a marketing campaign.';
+
+      const subject = `[Campaign Inquiry] ${service} — from ${name}`;
+      const body =
+`Hello MD. Naimul Haque,
+
+I would like to hire you for a campaign. Here are the project details:
+
+• Client / Brand: ${name}
+• Service Requested: ${service}
+• Estimated Budget / Scope: ${budget}
+
+Campaign Goals & Links:
+${message}
+
+Best regards,
+${name}`;
+
+      return { subject, body };
+    }
+
+    function handleBriefSubmit(event) {
+      event.preventDefault();
+      const { subject, body } = buildBriefDetails();
+      const mailtoUrl = `mailto:naimulovi5@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showToast('Opening email client for naimulovi5@gmail.com...');
+      window.location.href = mailtoUrl;
+    }
+
+    function copyFormattedBrief() {
+      const { subject, body } = buildBriefDetails();
+      copyTextToClipboard(`To: naimulovi5@gmail.com\nSubject: ${subject}\n\n${body}`, 'Brief copied! Paste into your email to naimulovi5@gmail.com');
+    }
+
+    // 7. Toast Notification System
+    let toastTimer = null;
+    function showToast(message) {
+      const box = document.getElementById('toastBox');
+      const msg = document.getElementById('toastMessage');
+      if (!box || !msg) return;
+
+      msg.textContent = message;
+      box.classList.remove('opacity-0', 'translate-y-3');
+      box.classList.add('opacity-100', 'translate-y-0');
+
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.remove('opacity-100', 'translate-y-0');
+        box.classList.add('opacity-0', 'translate-y-3');
+      }, 3200);
+    }
+
+    // 8. Interactive Cursor Spotlight on Cards (Desktop Optimized)
+    function initCardSpotlights() {
+      document.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+      }, { passive: true });
+    }
+
+    // Initialize on Window Load
+    window.onload = function () {
+      switchPage('overview');
+      updateThemeUI('light'); // Starts in crisp Off-White mode by default
+      filterAchievements('all');
+      initCardSpotlights();
+    };
+  </script>
+</body>
+</html>
